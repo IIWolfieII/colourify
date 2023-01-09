@@ -1,9 +1,11 @@
 <template>
   <!-- Sidebar starts -->
   <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-  <div class="sidebar">
-    <div class="desktop relative" style="height: 100%;">
-      <div class="logo mt-2 h-16 w-full flex items-center px-8">
+  <div class="sidebar-desktop">
+    <div class="top-menu relative" style="height: 100%;">
+      <div id="sidebar-logo" class="logo mt-2 h-16 w-full flex items-center px-8"
+           :class="animations.logoHovered ? 'animated' : ''"
+           @mouseenter="toggleLogoHovered()">
         <img src="./../assets/logo.png" class="w-12 h-12" alt="">
         <h2 class="ml-4">foxAdmin</h2>
       </div>
@@ -31,7 +33,7 @@
               <path
                   d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Products</router-link>
+            <router-link class="text-sm ml-2" to="/a">Products</router-link>
           </div>
         </li>
         <li class="menu-item-link">
@@ -43,7 +45,7 @@
               <polyline points="8 16 10 10 16 8 14 14 8 16"></polyline>
               <circle cx="12" cy="12" r="9"></circle>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Performance</router-link>
+            <router-link class="text-sm ml-2" to="/b">Performance</router-link>
           </div>
         </li>
         <li class="menu-item-link">
@@ -56,7 +58,7 @@
               <polyline points="17 8 21 12 17 16"></polyline>
               <line x1="14" y1="4" x2="10" y2="20"></line>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Deliverables</router-link>
+            <router-link class="text-sm ml-2" to="/c">Deliverables</router-link>
           </div>
         </li>
         <li class="menu-item-link">
@@ -68,7 +70,7 @@
               <path
                   d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Invoices</router-link>
+            <router-link class="text-sm ml-2" to="/d">Invoices</router-link>
           </div>
         </li>
         <li class="menu-item-link">
@@ -81,7 +83,7 @@
               <polyline points="4 12 12 16 20 12"/>
               <polyline points="4 16 12 20 20 16"/>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Inventory</router-link>
+            <router-link class="text-sm ml-2" to="/e">Inventory</router-link>
           </div>
         </li>
         <li class="menu-item-link">
@@ -94,17 +96,17 @@
                   d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
-            <router-link class="text-sm ml-2" to="/">Settings</router-link>
+            <router-link class="text-sm ml-2" to="/f">Settings</router-link>
           </div>
         </li>
       </ul>
       <div class="profile absolute bottom-2">
         <div class="flex items-center mt-4 mb-4 px-8">
-          <div class="w-10 h-10 bg-cover rounded-md mr-3">
-            <a target="_blank" href="https://github.com/IIWolfieII"><img
-                src="https://avatars.githubusercontent.com/u/57602208?v=4"
-                alt="User icon"
-                class="rounded-full h-full w-full overflow-hidden shadow"/></a>
+          <div class="user-icon w-10 h-10 bg-cover rounded-md mr-3">
+            <a target="_blank" href="https://github.com/IIWolfieII">
+              <img src="https://avatars.githubusercontent.com/u/57602208?v=4" alt="User icon"
+                   class="rounded-full h-full w-full overflow-hidden shadow"/>
+            </a>
           </div>
           <div class="text-red-200">
             <p class="text-m font-bold hover:underline"><a target="_blank" href="https://github.com/IIWolfieII">IIWolfieII</a>
@@ -352,12 +354,51 @@
 <script>
 export default {
   name: "SideBar",
-  data() {
+
+  data: function () {
     return {
       moved: true,
+      animations: {
+        logoHovered: false
+      },
+      palette: [],
     };
   },
+
+  created() {
+    /*
+    fetch('http://colormind.io/api/').then(response => response.json).then(palettes => {
+      console.log(palettes);
+    })
+    */
+  },
+
+  mounted: function () {
+    function $(selector) {
+      return document.querySelector(selector);
+    }
+
+    function $all(selector) {
+      return document.querySelectorAll(selector);
+    }
+
+    let sidebarLogo = $('div#sidebar-logo');
+    sidebarLogo.addEventListener('webkitAnimationEnd mozAnimationEnd animationend', function (e) { //webkitAnimationEnd mozAnimationEnd animationend
+      this.toggleLogoHovered();
+      console.log(this.animations.logoHovered);
+    });
+
+    window.onload = function () {
+      let activeLink = $('div.sidebar-desktop div.top-menu ul.menu-items li.menu-item-link a.exact-active');
+      activeLink.parentElement.parentElement.classList.add('exact-active');
+    }
+  },
+
   methods: {
+    toggleLogoHovered() {
+      this.$data.animations.logoHovered = !this.$data.animations.logoHovered;
+    },
+
     sidebarHandler() {
       var sideBar = document.getElementById("mobile-nav");
       sideBar.style.transform = "translateX(-260px)";
@@ -374,15 +415,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap");
 
-div.sidebar {
+div.sidebar-desktop {
   @apply w-64 absolute sm:relative bg-red-600 shadow md:h-full flex-col justify-between hidden sm:flex;
 
-  div.desktop {
+  div.top-menu {
     div.logo {
 
-      &:hover {
+      &.animated {
         animation: zoomInOut 2s ease-in-out;
       }
 
@@ -394,24 +435,47 @@ div.sidebar {
       @apply mt-12 text-red-200;
 
       li.menu-item-link {
+        @apply flex w-full justify-between font-bold hover:text-red-200 hover:bg-red-800 cursor-pointer items-center py-3 px-8;
+
+        &.exact-active {
+          @apply text-red-200 bg-red-800;
+
+          a {
+            transform: translate(10px) scale(1.1);
+          }
+
+          svg {
+            transform: rotate(45deg) scale(1.1);
+          }
+        }
+
         a {
-          transform: translate(0px);
+          transform: translate(0px) scale(1);
           transition: transform 300ms ease-in-out;
         }
 
         &:hover a {
-          transform: translate(10px);
+          transform: translate(10px) scale(1.1);
         }
 
-        @apply flex w-full justify-between font-bold hover:text-red-200 hover:bg-red-800 cursor-pointer items-center py-3 px-8;
-
         svg {
-          transform: rotate(0deg);
+          transform: rotate(0deg) scale(1);
           transition: transform 300ms ease-in-out;
         }
 
         &:hover svg {
-          transform: rotate(45deg);
+          transform: rotate(45deg) scale(1.1);
+        }
+      }
+    }
+
+    div.profile {
+      div.user-icon {
+        transform: scale(1);
+        transition: transform 300ms ease-in-out;
+
+        &:hover {
+          transform: scale(1.2);
         }
       }
     }
@@ -422,12 +486,12 @@ div.sidebar {
       @apply cursor-pointer text-white pt-5 pb-3 px-4 hover:bg-red-900;
 
       svg {
-        transform: rotate(0deg);
+        transform: scale(1);
         transition: transform 300ms ease-in-out;
       }
 
       &:hover svg {
-        transform: rotate(45deg);
+        transform: scale(1.2);
       }
     }
   }

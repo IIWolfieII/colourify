@@ -9,6 +9,7 @@ import SideBar from "@/components/SideBar.vue";
       <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
       <div class="w-full h-full rounded border-dashed border-2 border-gray-300">
         <!-- Place your content here -->
+        <router-view></router-view>
       </div>
     </div>
   </div>

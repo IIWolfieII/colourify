@@ -6,10 +6,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
-    }
+    },
 ]
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    linkActiveClass: 'active',
+    linkExactActiveClass: 'exact-active',
 })
 export default router
